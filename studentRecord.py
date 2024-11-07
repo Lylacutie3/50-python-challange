@@ -4,7 +4,7 @@ import os #for clear screen
 class StudentInfo():
 
     #CONSTRUCTOR      
-    def __init__(self, name, q1, q2, q3): 
+    def __init__(self, name, q1, q2, q3): #
         self.name = name
         self.q1 = q1
         self.q2 = q2
@@ -88,23 +88,26 @@ class ClassRecord():
                 self.student[i].display()
 
     def update(self):
-        name = input("Enter Student Name: ")
-        for i in range(self.last): 
-            if self.student[i].name == name:
-                print("What do you want to update? ")
-                print("1. Name")
-                c = int(input(("2. Quizes")))
+        if self.ifempty():
+            print("No Student in the class")
+        else:
+            name = input("Enter Student Name: ")
+            for i in range(self.last): 
+                if self.student[i].name == name:
+                    print("What do you want to update? ")
+                    print("1. Name")
+                    c = int(input(("2. Quizes")))
 
-                if c == 1:
-                    self.student[i].updateName(input("Enter New Name: "))
-                elif c == 2:
-                    self.student[i].updateScore()
-                else:
-                    print("Invalid choice")
-                return
-        
-        print("Name not found")
-        return
+                    if c == 1:
+                        self.student[i].updateName(input("Enter New Name: "))
+                    elif c == 2:
+                        self.student[i].updateScore()
+                    else:
+                        print("Invalid choice")
+                    return
+            
+            print("Name not found")
+            return
 
 
 student = ClassRecord(30);
